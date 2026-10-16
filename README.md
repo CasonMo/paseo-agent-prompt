@@ -2,6 +2,8 @@
 
 Paseo 插件：在一个界面里聚合管理 Claude Code / Codex / Pi / OpenCode / Qoder 的**全局提示词文件**，并支持"共享块一处修改、多端同步"。
 
+![界面截图](assets/screenshot.png)
+
 ## 功能
 
 - **侧边栏顶部入口**（Prompt Hub，左上角），也可以通过 ⌘K 搜 "Open Agent Prompt Hub" 打开
