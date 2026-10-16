@@ -1,0 +1,35 @@
+{
+  "name": "paseo-agent-prompt",
+  "version": "0.1.0",
+  "description": "聚合管理 Claude Code / Codex / Pi / OpenCode / Qoder 的全局提示词；共享块一处修改、多个 agent 生效",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CasonMo/paseo-agent-prompt.git"
+  },
+  "files": [
+    "paseo-plugin.json",
+    "OVERVIEW.md",
+    "index.client.tsx",
+    "index.server.ts",
+    "client/",
+    "server/",
+    "shared/"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "smoke": "tsx scripts/smoke.ts",
+    "smoke:service": "tsx scripts/service-smoke.ts"
+  },
+  "devDependencies": {
+    "@getpaseo/plugin": "0.11.4",
+    "@tanstack/react-query": "^5.90.11",
+    "@types/node": "^24.19.2",
+    "@types/react": "~19.2.0",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "zod": "^4.4.3"
+  }
+}

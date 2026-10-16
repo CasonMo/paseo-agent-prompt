@@ -1,0 +1,9 @@
+{
+  "id": "agent-prompt-hub",
+  "name": "Agent Prompt Hub",
+  "description": "聚合管理各 Agent 的全局提示词（Claude Code / Codex / Pi / OpenCode / Qoder）；共享块一处修改、多端同步",
+  "media": [],
+  "requirements": {
+    "paseo": ">=0.11.4"
+  }
+}
