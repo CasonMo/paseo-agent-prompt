@@ -1,5 +1,6 @@
 import type { PluginServerContext } from "@getpaseo/plugin/server";
 import { createHubService } from "./server/hub";
+import { checkForUpdate } from "./server/update-check";
 import {
   hubGetStateRpc,
   hubHistoryRpc,
@@ -7,6 +8,7 @@ import {
   hubSaveFileRpc,
   hubSettings,
   hubSyncSharedRpc,
+  hubUpdateCheckRpc,
 } from "./shared/hub";
 
 export default function contribute(server: PluginServerContext) {
@@ -18,6 +20,7 @@ export default function contribute(server: PluginServerContext) {
   server.handle(hubSyncSharedRpc, (input) => service.syncShared(input));
   server.handle(hubHistoryRpc, (input) => service.history(input));
   server.handle(hubRestoreRpc, (input) => service.restore(input));
+  server.handle(hubUpdateCheckRpc, () => checkForUpdate());
 
   return () => {};
 }

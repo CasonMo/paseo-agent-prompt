@@ -130,3 +130,15 @@ export const hubRestoreRpc = defineRpc({
   }),
   output: writeOutcomeSchema,
 });
+
+export const hubUpdateCheckRpc = defineRpc({
+  name: "prompt-hub.update-check",
+  input: z.object({}),
+  output: z.object({
+    currentVersion: z.string(),
+    latestVersion: z.string(),
+    latestCommit: z.string(),
+    updateAvailable: z.boolean(),
+    checkedAt: z.string(),
+  }),
+});

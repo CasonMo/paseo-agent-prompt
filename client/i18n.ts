@@ -18,6 +18,9 @@ const en = {
   "common.back": "Back",
 
   "banner.readOnly": "Read-only mode is on: no files are written. Turn it off in Settings → Plugins → Prompt Hub.",
+  "update.available":
+    "New version v{latest} is available (current v{current}) · Update: paseo plugin update agent-prompt-hub",
+  "update.dismiss": "Dismiss",
   "error.loadFailed": "Failed to load: {message}",
 
   "shared.title": "Shared block: edit once, apply to many agents",
@@ -149,6 +152,8 @@ const zh: Record<MessageKey, string> = {
   "common.back": "返回",
 
   "banner.readOnly": "只读模式已开启：不会写入任何文件。可在 Settings → Plugins → Prompt Hub 中关闭。",
+  "update.available": "发现新版本 v{latest}（当前 v{current}）· 更新：paseo plugin update agent-prompt-hub",
+  "update.dismiss": "关闭",
   "error.loadFailed": "读取失败：{message}",
 
   "shared.title": "共享块（一处修改，多 agent 生效）",

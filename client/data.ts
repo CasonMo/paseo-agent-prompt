@@ -1,7 +1,7 @@
 import { useRpc } from "@getpaseo/plugin/client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { AgentId } from "../shared/agents";
-import { hubGetStateRpc, hubHistoryRpc, hubRestoreRpc, hubSaveFileRpc, hubSyncSharedRpc } from "../shared/hub";
+import { hubGetStateRpc, hubHistoryRpc, hubRestoreRpc, hubSaveFileRpc, hubSyncSharedRpc, hubUpdateCheckRpc } from "../shared/hub";
 
 const STATE_KEY = ["agent-prompt-hub", "state"] as const;
 
@@ -52,5 +52,16 @@ export function useRestore() {
   return useMutation({
     mutationFn: call,
     onSettled: () => queryClient.invalidateQueries({ queryKey: STATE_KEY }),
+  });
+}
+
+export function useUpdateCheck() {
+  const call = useRpc(hubUpdateCheckRpc);
+  return useQuery({
+    queryKey: ["agent-prompt-hub", "update-check"],
+    queryFn: () => call({}),
+    staleTime: 3_600_000,
+    refetchOnWindowFocus: false,
+    retry: 1,
   });
 }

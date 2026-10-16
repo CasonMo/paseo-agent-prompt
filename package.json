@@ -1,6 +1,6 @@
 {
   "name": "paseo-agent-prompt",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "聚合管理 Claude Code / Codex / Pi / OpenCode / Qoder 的全局提示词；共享块一处修改、多个 agent 生效",
   "license": "MIT",
   "repository": {

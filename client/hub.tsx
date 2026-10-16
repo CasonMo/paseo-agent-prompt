@@ -7,7 +7,7 @@ import { Pressable, ScrollView, Text, View } from "react-native";
 import { AGENT_IDS, AGENT_META, type AgentId } from "../shared/agents";
 import { hubSettings, type AgentState, type WriteOutcome } from "../shared/hub";
 import { SHARED_BLOCK_BEGIN, SHARED_BLOCK_END } from "../shared/markers";
-import { useHistory, useHubState, useRestore, useSaveFile, useSyncShared } from "./data";
+import { useHistory, useHubState, useRestore, useSaveFile, useSyncShared, useUpdateCheck } from "./data";
 import { AGENT_NOTE_KEYS, useI18n, type Translate } from "./i18n";
 import { HubSettingsScreen } from "./settings";
 
@@ -30,6 +30,20 @@ function createStyles(theme: PluginScreenProps["theme"], compact: boolean) {
     subtitle: { fontSize: 11, color: theme.colors.foregroundMuted },
     banner: { backgroundColor: theme.colors.surface1, borderRadius: 10, padding: 10, borderWidth: 1, borderColor: theme.colors.border },
     bannerText: { fontSize: 11, color: theme.colors.foregroundMuted },
+    updateBanner: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 8,
+      backgroundColor: theme.colors.surface2,
+      borderColor: theme.colors.border,
+      borderWidth: 1,
+      borderRadius: 8,
+      paddingHorizontal: 10,
+      paddingVertical: 6,
+    },
+    updateText: { flex: 1, fontSize: 11, color: theme.colors.foreground, lineHeight: 16 },
+    updateDismiss: { paddingHorizontal: 4, paddingVertical: 2 },
+    updateDismissText: { fontSize: 12, color: theme.colors.foregroundMuted },
     card: { backgroundColor: theme.colors.surface1, borderRadius: 10, padding: 12, gap: 10 },
     sectionTitle: { fontSize: 13, fontWeight: "600", color: theme.colors.foreground },
     hint: { fontSize: 10, color: theme.colors.foregroundMuted },
@@ -203,6 +217,7 @@ export function HubScreen({ theme, host, layout }: PluginScreenProps) {
   const toast = useToast();
   const { t } = useI18n();
   const stateQuery = useHubState();
+  const updateQuery = useUpdateCheck();
   const settingsState = useSettings(hubSettings);
   const saveFile = useSaveFile();
   const syncShared = useSyncShared();
@@ -218,6 +233,7 @@ export function HubScreen({ theme, host, layout }: PluginScreenProps) {
   const [syncResults, setSyncResults] = useState<Array<{ agentId: AgentId; outcome: WriteOutcome }> | null>(null);
   const [historyOpen, setHistoryOpen] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [updateDismissed, setUpdateDismissed] = useState(false);
 
   const settingsValues = settingsState.status === "ready" ? settingsState.values : null;
   const readOnly = settingsValues?.readOnly ?? data?.readOnly ?? false;
@@ -435,6 +451,22 @@ export function HubScreen({ theme, host, layout }: PluginScreenProps) {
           <ActionButton label={stateQuery.isFetching ? t("common.refreshing") : t("common.refresh")} onPress={refreshAll} styles={styles} />
         </View>
       </View>
+
+      {updateQuery.data?.updateAvailable && !updateDismissed ? (
+        <View style={styles.updateBanner}>
+          <Text style={styles.updateText}>
+            {t("update.available", { latest: updateQuery.data.latestVersion, current: updateQuery.data.currentVersion })}
+          </Text>
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={t("update.dismiss")}
+            onPress={() => setUpdateDismissed(true)}
+            style={styles.updateDismiss}
+          >
+            <Text style={styles.updateDismissText}>✕</Text>
+          </Pressable>
+        </View>
+      ) : null}
 
       {readOnly ? (
         <View style={styles.banner}>
