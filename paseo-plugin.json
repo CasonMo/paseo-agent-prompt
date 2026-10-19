@@ -1,7 +1,7 @@
 {
   "id": "agent-prompt-hub",
   "name": "Agent Prompt Hub",
-  "description": "聚合管理各 Agent 的全局提示词（Claude Code / Codex / Pi / OpenCode / Qoder）；共享块一处修改、多端同步",
+  "description": "聚合管理各 Agent 的全局提示词（Claude Code / Codex / Pi / OpenCode / Qoder）；共享块一处修改、多端同步 / Manage the global prompt files of Claude Code / Codex / Pi / OpenCode / Qoder in one place; edit a shared block once and sync it to every agent",
   "media": [
     "assets/screenshot.png"
   ],

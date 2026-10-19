@@ -50,3 +50,58 @@ paseo plugin reload agent-prompt-hub
 ```
 
 生效时机：各 agent 在会话启动时读取这些文件，修改对新会话生效。
+
+---
+
+## English
+
+A Paseo plugin that manages the **global prompt files** of Claude Code / Codex / Pi / OpenCode / Qoder in one place, with "edit a shared block once, sync it to many agents".
+
+![Screenshot](assets/screenshot.png)
+
+### Features
+
+- **Sidebar top entry** (Prompt Hub, upper left); also openable via ⌘K search for "Open Agent Prompt Hub"
+- **Unified editing**: view and edit the global prompt files of all five agents in one place; opening a file **reads its full current content**, and saving uses it as the baseline, so nothing is silently overwritten
+- **Shared block + sync preview**: write one block and sync it to any number of agents; before syncing, a preview shows what will happen to each file (create / append / update / remove / no change), and append or update explicitly states "existing content is kept"; clearing the block and syncing removes it from every file
+- **Safe writes**: automatic backup before writing (configurable retention), mtime + sha256 conflict detection (refuses to overwrite external changes), atomic writes, original permissions and line endings preserved
+- **Backup history**: browse and restore any previous version in one click (the current version is backed up first)
+- **Update notice**: the top of the main screen checks the registry for a newer version; when one exists, a banner with the update command appears (only the public registry record and its pinned package.json are read; no data is uploaded)
+- **Internationalization**: English by default, Chinese switchable in settings
+- **Settings**: per-agent file paths, backup retention, read-only mode, default sync targets, language
+
+### Target files
+
+| Agent | Global prompt file | Env var override |
+| --- | --- | --- |
+| Claude Code | `~/.claude/CLAUDE.md` | `CLAUDE_CONFIG_DIR` |
+| Codex | `~/.codex/AGENTS.md` | `CODEX_HOME` |
+| Pi | `~/.pi/agent/AGENTS.md` | `PI_CODING_AGENT_DIR` |
+| OpenCode | `~/.config/opencode/AGENTS.md` | `XDG_CONFIG_HOME` |
+| Qoder CLI | `~/.qoder/AGENTS.md` | `QODER_CONFIG_DIR` |
+
+Shared block storage: `~/.config/paseo/prompt-hub/shared.md` (overridable via `XDG_CONFIG_HOME`).
+
+### Usage
+
+- Sidebar top → **Prompt Hub** (or ⌘K)
+- **Tab layout** at the top: `Shared` / `Claude Code` / `Codex` / `Pi` / `OpenCode` / `Qoder`; each tab shows and edits that target
+  - Agent tabs carry a status dot: green = file exists / gray = not created / yellow = shared-block markers are off
+- Shared tab: edit the block → pick targets → review the sync preview → "Sync to selected agents"
+- Agent tab: view or edit the file's full current content, save, refresh (discard draft), browse and restore backup history
+- **Settings** button at the top right of the main screen: switches to settings inside the plugin panel (with a back button, same pattern as agent-usage)
+- Settings → Plugins → **Prompt Hub** has the same entry
+- Settings: language (English by default), path overrides, backup retention, read-only mode, default sync targets
+
+### Development
+
+```bash
+npm install
+npm run typecheck      # type checking
+npm run smoke          # pure-function and file-layer smoke tests (path resolution / block assembly / backup / restore)
+npm run smoke:service  # service-layer end-to-end smoke tests (temporary directory, never touches real files)
+paseo plugin install /absolute/path/to/agent-prompt-hub
+paseo plugin reload agent-prompt-hub
+```
+
+When changes take effect: each agent reads these files when a session starts, so edits apply to new sessions.
