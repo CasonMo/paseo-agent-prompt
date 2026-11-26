@@ -8,7 +8,7 @@ export type Language = "en" | "zh";
 const en = {
   "app.title": "Agent Prompt Hub",
   "app.subtitle":
-    "Manage global prompts for Claude Code, Codex, Pi, OpenCode, and Qoder. One shared block syncs to every agent you pick.",
+    "Manage global prompts for Claude Code, Codex, Pi, OpenCode, Qoder, and Qoder CN. One shared block syncs to every agent you pick.",
   "sidebar.label": "Prompt Hub",
 
   "common.refresh": "Refresh",
@@ -56,12 +56,14 @@ const en = {
   "agentNote.pi": "User instructions applied across working directories (context file)",
   "agentNote.opencode": "Global rules file applied to all projects",
   "agentNote.qoder": "User-level static memory (cross-project preferences)",
+  "agentNote.qoder-cn": "User-level static memory (cross-project preferences)",
 
   "agentPath.claude": "~/.claude/CLAUDE.md (CLAUDE_CONFIG_DIR overrides)",
   "agentPath.codex": "~/.codex/AGENTS.md (CODEX_HOME overrides)",
   "agentPath.pi": "~/.pi/agent/AGENTS.md (PI_CODING_AGENT_DIR overrides)",
   "agentPath.opencode": "~/.config/opencode/AGENTS.md (XDG_CONFIG_HOME overrides)",
   "agentPath.qoder": "~/.qoder/AGENTS.md (QODER_CONFIG_DIR overrides)",
+  "agentPath.qoder-cn": "~/.qoder-cn/AGENTS.md (QODERCN_CONFIG_DIR overrides)",
 
   "editor.title": "{label} · global prompt file",
   "editor.copyPath": "Copy path",
@@ -142,7 +144,7 @@ export type Translate = (key: MessageKey, params?: Record<string, string | numbe
 
 const zh: Record<MessageKey, string> = {
   "app.title": "全局提示词中心",
-  "app.subtitle": "统一管理 Claude Code / Codex / Pi / OpenCode / Qoder 的全局提示词；共享块一处修改，多端同步。",
+  "app.subtitle": "统一管理 Claude Code / Codex / Pi / OpenCode / Qoder / Qoder CN 的全局提示词；共享块一处修改，多端同步。",
   "sidebar.label": "提示词中心",
 
   "common.refresh": "刷新",
@@ -189,12 +191,14 @@ const zh: Record<MessageKey, string> = {
   "agentNote.pi": "跨工作目录的用户指令（上下文文件）",
   "agentNote.opencode": "全局规则文件，对所有项目生效",
   "agentNote.qoder": "用户级静态记忆（跨项目通用偏好）",
+  "agentNote.qoder-cn": "用户级静态记忆（跨项目通用偏好）",
 
   "agentPath.claude": "~/.claude/CLAUDE.md（CLAUDE_CONFIG_DIR 可覆盖）",
   "agentPath.codex": "~/.codex/AGENTS.md（CODEX_HOME 可覆盖）",
   "agentPath.pi": "~/.pi/agent/AGENTS.md（PI_CODING_AGENT_DIR 可覆盖）",
   "agentPath.opencode": "~/.config/opencode/AGENTS.md（XDG_CONFIG_HOME 可覆盖）",
   "agentPath.qoder": "~/.qoder/AGENTS.md（QODER_CONFIG_DIR 可覆盖）",
+  "agentPath.qoder-cn": "~/.qoder-cn/AGENTS.md（QODERCN_CONFIG_DIR 可覆盖）",
 
   "editor.title": "{label} · 全局提示词文件",
   "editor.copyPath": "复制路径",
@@ -276,6 +280,7 @@ export const AGENT_NOTE_KEYS: Record<AgentId, MessageKey> = {
   pi: "agentNote.pi",
   opencode: "agentNote.opencode",
   qoder: "agentNote.qoder",
+  "qoder-cn": "agentNote.qoder-cn",
 };
 
 export const AGENT_PATH_KEYS: Record<AgentId, MessageKey> = {
@@ -284,6 +289,7 @@ export const AGENT_PATH_KEYS: Record<AgentId, MessageKey> = {
   pi: "agentPath.pi",
   opencode: "agentPath.opencode",
   qoder: "agentPath.qoder",
+  "qoder-cn": "agentPath.qoder-cn",
 };
 
 export function translate(language: Language, key: MessageKey, params?: Record<string, string | number>): string {

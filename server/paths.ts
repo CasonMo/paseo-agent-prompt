@@ -41,6 +41,8 @@ export function resolveAgentPath(
       return join(envDir(ctx.env, "XDG_CONFIG_HOME", join(ctx.home, ".config")), "opencode", "AGENTS.md");
     case "qoder":
       return join(envDir(ctx.env, "QODER_CONFIG_DIR", join(ctx.home, ".qoder")), "AGENTS.md");
+    case "qoder-cn":
+      return join(envDir(ctx.env, "QODERCN_CONFIG_DIR", join(ctx.home, ".qoder-cn")), "AGENTS.md");
   }
 }
 

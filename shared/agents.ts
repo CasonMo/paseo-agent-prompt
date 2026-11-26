@@ -1,4 +1,4 @@
-export const AGENT_IDS = ["claude", "codex", "pi", "opencode", "qoder"] as const;
+export const AGENT_IDS = ["claude", "codex", "pi", "opencode", "qoder", "qoder-cn"] as const;
 
 export type AgentId = (typeof AGENT_IDS)[number];
 
@@ -33,5 +33,10 @@ export const AGENT_META: Record<AgentId, AgentMeta> = {
     label: "Qoder CLI",
     notes: "用户级静态记忆（跨项目通用偏好）",
     defaultPathLabel: "~/.qoder/AGENTS.md（QODER_CONFIG_DIR 可覆盖）",
+  },
+  "qoder-cn": {
+    label: "Qoder CN CLI",
+    notes: "用户级静态记忆（跨项目通用偏好）",
+    defaultPathLabel: "~/.qoder-cn/AGENTS.md（QODERCN_CONFIG_DIR 可覆盖）",
   },
 };

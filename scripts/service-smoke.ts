@@ -24,7 +24,7 @@ async function main() {
     const codexPath = join(dir, ".codex", "AGENTS.md");
 
     const state1 = await service.getState();
-    assert.equal(state1.agents.length, 5);
+    assert.equal(state1.agents.length, 6);
     assert.ok(state1.agents.every((agent) => !agent.exists));
     assert.equal(state1.shared.exists, false);
 
@@ -57,6 +57,7 @@ async function main() {
     const state3 = await service.getState();
     assert.equal(state3.agents.find((agent) => agent.id === "claude")!.sharedBlock, "ok");
     assert.equal(state3.agents.find((agent) => agent.id === "qoder")!.sharedBlock, "none");
+    assert.equal(state3.agents.find((agent) => agent.id === "qoder-cn")!.sharedBlock, "none");
 
     const sync2 = await service.syncShared({
       content: "shared v2\n",

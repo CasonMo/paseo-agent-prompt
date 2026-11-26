@@ -1,10 +1,10 @@
 # Agent Prompt Hub
 
-Manage the global prompt files of five coding agents from one place in Paseo: Claude Code, Codex, Pi, OpenCode, and Qoder.
+Manage the global prompt files of six coding agents from one place in Paseo: Claude Code, Codex, Pi, OpenCode, Qoder, and Qoder CN.
 
 The plugin reads and writes each agent's native user-level instruction file, so changes apply everywhere the agent runs (Paseo, terminals, IDEs), not only to Paseo sessions. Files that already exist are shown in full before you edit them, and every write keeps content outside the managed region untouched.
 
-The shared block maintains one block of instructions and syncs it to any number of the five agents. Sync only replaces the marked region inside each file, or appends the block when a file has no markers yet. Clearing the block and syncing removes it. Before you confirm a sync, the plugin previews what it will do to each file: create, append, update, remove, or no change.
+The shared block maintains one block of instructions and syncs it to any number of the six agents. Sync only replaces the marked region inside each file, or appends the block when a file has no markers yet. Clearing the block and syncing removes it. Before you confirm a sync, the plugin previews what it will do to each file: create, append, update, remove, or no change.
 
 Writes are conflict-checked against the file's current hash, backed up first with configurable retention, written atomically, and keep the original file permissions and line endings. A history panel lists backups and can restore any of them, backing up the current version first. A read-only mode in settings disables all writes.
 
@@ -12,11 +12,11 @@ Settings cover the plugin language (English by default, Chinese available), per-
 
 ## 中文
 
-在一个界面里管理五个编码 Agent 的全局提示词文件：Claude Code、Codex、Pi、OpenCode 和 Qoder。
+在一个界面里管理六个编码 Agent 的全局提示词文件：Claude Code、Codex、Pi、OpenCode、Qoder 和 Qoder CN。
 
 插件读写的是每个 Agent 原生的用户级指令文件，因此修改对这个 Agent 运行的所有位置（Paseo、终端、IDE）都生效，而不只是 Paseo 会话。已存在的文件在编辑前会完整展示，每次写入都不会动到托管区域之外的内容。
 
-共享块维护一段指令，可同步到五个 Agent 中的任意多个。同步只替换每个文件中被标记的区域；文件还没有标记时则追加该块；清空共享块后再同步即从所有文件中移除。确认同步前，插件会预览对每个文件将执行的操作：创建、追加、更新、移除或无变化。
+共享块维护一段指令，可同步到六个 Agent 中的任意多个。同步只替换每个文件中被标记的区域；文件还没有标记时则追加该块；清空共享块后再同步即从所有文件中移除。确认同步前，插件会预览对每个文件将执行的操作：创建、追加、更新、移除或无变化。
 
 写入前会用当前文件哈希做冲突检测，先按可配置的保留份数备份，再原子写入，并保留原文件权限与换行风格。历史面板列出所有备份，可一键恢复任意一份（恢复前会先备份当前版本）。设置中的只读模式会禁用全部写入。
 

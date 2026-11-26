@@ -27,7 +27,7 @@ Paseo plugin requirements we must follow when developing, reviewing, and releasi
 
 - The plugin manages user prompt files; their contents are private. Never log, transmit,
   or include them anywhere beyond the local files themselves.
-- Writes happen only to the five agent prompt paths and the shared store, only after an
+- Writes happen only to the six agent prompt paths and the shared store, only after an
   explicit user action, always after a backup, and never outside the marked shared-block
   region. Read-only mode must disable every write.
 - No credentials are handled. The only network destination is the version check

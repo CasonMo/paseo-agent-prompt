@@ -13,6 +13,7 @@ function testPaths() {
   assert.equal(resolveAgentPath("pi", ctx), "/Users/tester/.pi/agent/AGENTS.md");
   assert.equal(resolveAgentPath("opencode", ctx), "/Users/tester/.config/opencode/AGENTS.md");
   assert.equal(resolveAgentPath("qoder", ctx), "/Users/tester/.qoder/AGENTS.md");
+  assert.equal(resolveAgentPath("qoder-cn", ctx), "/Users/tester/.qoder-cn/AGENTS.md");
 
   const envCtx: PathContext = {
     env: {
@@ -21,6 +22,7 @@ function testPaths() {
       PI_CODING_AGENT_DIR: "/x/pi",
       XDG_CONFIG_HOME: "/x/xdg",
       QODER_CONFIG_DIR: "/x/qoder",
+      QODERCN_CONFIG_DIR: "/x/qoder-cn",
     },
     home: "/Users/tester",
   };
@@ -29,6 +31,7 @@ function testPaths() {
   assert.equal(resolveAgentPath("pi", envCtx), "/x/pi/AGENTS.md");
   assert.equal(resolveAgentPath("opencode", envCtx), "/x/xdg/opencode/AGENTS.md");
   assert.equal(resolveAgentPath("qoder", envCtx), "/x/qoder/AGENTS.md");
+  assert.equal(resolveAgentPath("qoder-cn", envCtx), "/x/qoder-cn/AGENTS.md");
   assert.equal(sharedStorePath(envCtx), "/x/xdg/paseo/prompt-hub/shared.md");
   assert.equal(resolveAgentPath("codex", ctx, { codex: "~/custom/AGENTS.md" }), "/Users/tester/custom/AGENTS.md");
   console.log("paths ok");
